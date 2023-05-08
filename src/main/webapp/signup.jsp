@@ -53,7 +53,9 @@
            <div class="form-group" style="width: 60%">
 			 	 <button type="submit" class="btn btn-primary">Signup</button>
               <button type="reset" class="btn btn-danger">Clear</button>
-              
+                     <a href="signups">
+                          <button type="button" class="btn btn-warning">All Data!</button>
+                     </a>
          </div>
          </form>
  	  

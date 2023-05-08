@@ -28,9 +28,18 @@
     <thead>
       <tr>
       <th>Pid</th>
-        <th>Username</th>
+        <th>
+         <a href="sortData?sort=username&orderBy=asc"> 
+           <img alt="" src="ad.png">
+        </a>
+        Username</th>
         <th>Password</th>
-        <th>Email</th>
+        <th>
+        <a href="sortData?sort=email&orderBy=desc"> 
+        <img alt="" src="ad.png">
+        </a>
+          Email
+        </th>
          <th>Mobile</th>
          <th>Address</th>
          <th>Created Date</th>
@@ -47,12 +56,13 @@
          <td><%=signupDTO.getPid()%></td>
         <td><%=signupDTO.getUsername()%></td>
        <td><%=signupDTO.getPassword()%></td>
-        <td><%=signupDTO.getEmail()%></td>
+        <td>
+        <%=signupDTO.getEmail()%></td>
          <td><%=signupDTO.getMobile()%></td>
           <td><%=signupDTO.getAddress()%></td>
              <td><%=signupDTO.getDoe()%></td>
              <td>
-              <a href="#">
+              <a href="dsignup?pid=<%=signupDTO.getPid()%>">
               <button type="button" class="btn btn-danger">DELETE</button>
               </a>
              </td>

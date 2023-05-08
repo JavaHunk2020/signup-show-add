@@ -12,6 +12,22 @@ import java.util.List;
 public class SignupDaoService {
 	
 	
+	public static void deleteByPid(int pid) {
+		try {
+			//
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/batch100_db","root","mysql@1234");
+			String sql="delete from psignup_tbl where pid = ?";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, pid);
+			//FIRE THE QUERY
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			e.printStackTrace();	
+		}
+	}
+	
+	
 	public static void save(SignupDTO signupDTO) {
 		try {
 			//
