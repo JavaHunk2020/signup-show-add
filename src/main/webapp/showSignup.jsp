@@ -65,6 +65,10 @@
               <a href="dsignup?pid=<%=signupDTO.getPid()%>">
               <button type="button" class="btn btn-danger">DELETE</button>
               </a>
+              
+              <a href="esignup?pid=<%=signupDTO.getPid()%>">
+              <button type="button" class="btn btn-primary">EDIT</button>
+              </a>
              </td>
       </tr>
       
