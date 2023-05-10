@@ -24,6 +24,24 @@
         
         <h1>PROFILE DATA!</h1>
         <span style="color:red;font-size: 16px;font-weight: bold;">${message}</span>
+        
+          <form action="seachRecords">
+          	<input type="text"  value="${param.searchText}"  name="searchText" class="form-control" style="width: 30%;display: inline;">
+            <button type="submit" class="btn btn-primary" style="margin-top: -5px;">GO!!!</button>
+            
+             <a href="signups">
+             <button type="button" class="btn btn-primary" style="margin-top: -5px;">Clear</button>
+             </a>
+            </form>
+            <hr/>
+            
+              <%
+		 List<SignupDTO> dtos=(List<SignupDTO>)request.getAttribute("signups");
+              
+              %>
+            
+         <b>Total Record(s) : <span style="color:blue;"><%=dtos.size()%></span></b>
+         <hr/>
          <table class="table table-bordered">
     <thead>
       <tr>
@@ -49,7 +67,6 @@
     <tbody>
     
       <%
-		 List<SignupDTO> dtos=(List<SignupDTO>)request.getAttribute("signups");
         for(SignupDTO signupDTO : dtos){        
       %>
       <tr>

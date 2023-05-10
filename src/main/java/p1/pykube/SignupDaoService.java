@@ -100,6 +100,44 @@ public class SignupDaoService {
 			e.printStackTrace();
 		}
 	}
+	
+	
+	static List<SignupDTO> searchData(String searchText) {
+		List<SignupDTO> signupDTOs = new ArrayList<SignupDTO>();
+		try {
+			
+			//ashish - shish
+			//
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/batch100_db", "root",
+					"mysql@1234");
+			String sql = "select pid,username,password,email,mobile,address,doe from psignup_tbl where username like ? OR email like ? OR mobile like ?";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + searchText + "%");
+			pstmt.setString(2, "%" + searchText + "%");
+			pstmt.setString(3, "%" + searchText + "%");
+			// FIRE THE QUERY
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				// Creating object for each row
+				SignupDTO signupDTO = new SignupDTO();
+				signupDTO.setPid(rs.getInt(1));
+				signupDTO.setUsername(rs.getString(2));
+				signupDTO.setPassword(rs.getString(3));
+				signupDTO.setEmail(rs.getString(4));
+				// valueOf convets Long into String object
+				signupDTO.setMobile(String.valueOf(rs.getLong(5)));
+				signupDTO.setAddress(rs.getString(6));
+				signupDTO.setDoe(rs.getTimestamp(7));
+				// Every object we are adding inside list
+				signupDTOs.add(signupDTO);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return signupDTOs;
+	}
 
 	static List<SignupDTO> findAll() {
 		List<SignupDTO> signupDTOs = new ArrayList<SignupDTO>();
